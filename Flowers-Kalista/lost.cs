@@ -224,7 +224,7 @@ namespace Flowers滑板鞋_重生_
             连招E击杀();
             E抢野怪();
             自动E();
-            Balista();
+           /* Balista();*/
         }
 
         private static void 连招()
