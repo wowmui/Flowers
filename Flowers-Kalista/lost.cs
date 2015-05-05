@@ -38,10 +38,6 @@ namespace Flowers滑板鞋_重生_
         {
             return Player.Health * 100 / Player.MaxHealth;
         }
-        private static bool BlitzInGame()
-        {
-            return ObjectManager.Get<Obj_AI_Hero>().Any(h => h.IsAlly && !h.IsMe && h.ChampionName == "Blitzcrank");
-        }
 
         public const string ChampionName = "Kalista";
         public static Orbwalking.Orbwalker Orbwalker;
@@ -65,11 +61,12 @@ namespace Flowers滑板鞋_重生_
             Q.SetSkillshot(0.25f, 35f, 1600f, true, SkillshotType.SkillshotLine);
             R.SetSkillshot(0.50f, 1500, float.MaxValue, false, SkillshotType.SkillshotCircle);
 
-            if (!BlitzInGame())
             {
-                return;
+                foreach (Obj_AI_Hero enem in ObjectManager.Get<Obj_AI_Hero>().Where(enem => enem.IsValid && enem.IsEnemy))
+                {
+                    KalistaM.菜单.SubMenu("BalistaTarget").AddItem(new MenuItem("target" + enem.ChampionName, enem.ChampionName).SetValue(true));
+                }
             }
-
 
             KalistaM.KalistaMenu();
 

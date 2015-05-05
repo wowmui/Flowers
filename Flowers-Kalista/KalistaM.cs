@@ -76,13 +76,6 @@ namespace Flowers滑板鞋_重生_
 
             菜单.AddSubMenu(new Menu("Balista Target", "BalistaTarget"));
 
-            {
-                foreach (Obj_AI_Hero enem in ObjectManager.Get<Obj_AI_Hero>().Where(enem => enem.IsValid && enem.IsEnemy))
-                {
-                    菜单.SubMenu("BalistaTarget").AddItem(new MenuItem("target" + enem.ChampionName, enem.ChampionName).SetValue(true));
-                }
-            }
-
             菜单.AddSubMenu(new Menu("Misc", "Misc"));
             菜单.SubMenu("Misc").AddItem(new MenuItem("DamageExxx", "Auto E -> When millions will die and hero has buff").SetValue(true));
             菜单.SubMenu("Misc").AddItem(new MenuItem("usePackets", "Use Packets").SetValue(false));
@@ -101,7 +94,7 @@ namespace Flowers滑板鞋_重生_
 
             菜单.AddSubMenu(new Menu("Message", "Message"));
             菜单.SubMenu("Message").AddItem(new MenuItem("Credit", "Credit : NightMoon"));
-            菜单.SubMenu("Message").AddItem(new MenuItem("Version", "Version : 0.0.0.1"));
+            菜单.SubMenu("Message").AddItem(new MenuItem("Version", "Version : 0.0.0.4"));
             菜单.SubMenu("Message").AddItem(new MenuItem("ttt", "if you have more Bug pls tell me"));
 
             菜单.AddToMainMenu();
