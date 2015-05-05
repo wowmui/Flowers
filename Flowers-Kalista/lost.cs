@@ -50,8 +50,8 @@ namespace Flowers滑板鞋_重生_
 
             Notifications.AddNotification("Flowers Kalista by NightMoon", 1000);
             Notifications.AddNotification("`                  And  Lost`", 1000);
-            Notifications.AddNotification("Version : 0.0.0.4", 1000);
-            Game.PrintChat("Flowers-Kalista Loaded!~~~ Version : 0.0.0.4 Thanks for your use!");
+            Notifications.AddNotification("Version : 0.0.0.5", 1000);
+            Game.PrintChat("Flowers-Kalista Loaded!~~~ Version : 0.0.0.5 Thanks for your use!");
             Game.PrintChat("What are the deficiencies please immediately feedback. Thank you! ");
             Q = new Spell(SpellSlot.Q, 1160f);
             W = new Spell(SpellSlot.W, 5000f);
@@ -59,14 +59,7 @@ namespace Flowers滑板鞋_重生_
             R = new Spell(SpellSlot.R, 1500f);
 
             Q.SetSkillshot(0.25f, 35f, 1600f, true, SkillshotType.SkillshotLine);
-            R.SetSkillshot(0.50f, 1500, float.MaxValue, false, SkillshotType.SkillshotCircle);
-
-            {
-                foreach (Obj_AI_Hero enem in ObjectManager.Get<Obj_AI_Hero>().Where(enem => enem.IsValid && enem.IsEnemy))
-                {
-                    KalistaM.菜单.SubMenu("BalistaTarget").AddItem(new MenuItem("target" + enem.ChampionName, enem.ChampionName).SetValue(true));
-                }
-            }
+//            R.SetSkillshot(0.50f, 1500, float.MaxValue, false, SkillshotType.SkillshotCircle);
 
             KalistaM.KalistaMenu();
 
@@ -168,10 +161,10 @@ namespace Flowers滑板鞋_重生_
            }
 
             //balista biubiubiu fuckyou man 
-           if (KalistaM.菜单.Item("minBRange", true).GetValue<Circle>().Active)
+       /*    if (KalistaM.菜单.Item("minBRange", true).GetValue<Circle>().Active)
                Render.Circle.DrawCircle(Player.Position, KalistaM.菜单.Item("minRange", true).GetValue<Slider>().Value, KalistaM.菜单.Item("minBRange", true).GetValue<Circle>().Color, 3);
            if (KalistaM.菜单.Item("maxBRange", true).GetValue<Circle>().Active)
-               Render.Circle.DrawCircle(Player.Position, KalistaM.菜单.Item("maxRange", true).GetValue<Slider>().Value, KalistaM.菜单.Item("maxBRange", true).GetValue<Circle>().Color, 3);
+               Render.Circle.DrawCircle(Player.Position, KalistaM.菜单.Item("maxRange", true).GetValue<Slider>().Value, KalistaM.菜单.Item("maxBRange", true).GetValue<Circle>().Color, 3);*/
         }
 
 /*       private static void 物品使用()//引用  JustMaokai THX
@@ -437,7 +430,7 @@ namespace Flowers滑板鞋_重生_
             }
         }
 
-        private static void Balista()
+    /*    private static void Balista()
         {
 
             if (Player.IsDead || !KalistaM.菜单.Item("useToggle").GetValue<bool>() &&
@@ -474,7 +467,7 @@ namespace Flowers滑板鞋_重生_
                     }
                 }
             }
-        }
+        }*/
 
     }
 }

@@ -67,14 +67,14 @@ namespace Flowers滑板鞋_重生_
             
              }*/
 
-            菜单.AddSubMenu(new Menu("Balista", "BiuBiuBiu"));
+         /*   菜单.AddSubMenu(new Menu("Balista", "BiuBiuBiu"));
             菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("useToggle", "Toggle").SetValue(false));
             菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("useOnComboKey", "Enabled").SetValue(new KeyBind(32, KeyBindType.Press)));
             菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("minRange", "Min Range to Balista", true).SetValue(new Slider(700, 100, 1449)));
             菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("maxRange", "Max Range to Balista", true).SetValue(new Slider(1500, 100, 1500)));
-            菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("BiuBiuBiu1", "Kalista and Blitzcrank biubiubiu~"));
+            菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("BiuBiuBiu1", "Kalista and Blitzcrank biubiubiu~"));*/
 
-            菜单.AddSubMenu(new Menu("Balista Target", "BalistaTarget"));
+         /*   菜单.AddSubMenu(new Menu("Balista Target", "BalistaTarget"));*/
 
             菜单.AddSubMenu(new Menu("Misc", "Misc"));
             菜单.SubMenu("Misc").AddItem(new MenuItem("DamageExxx", "Auto E -> When millions will die and hero has buff").SetValue(true));
@@ -85,6 +85,8 @@ namespace Flowers滑板鞋_重生_
             菜单.SubMenu("Drawing").AddItem(new MenuItem("drawingW", "W Range").SetValue(new Circle(false, Color.FromArgb(202, 170, 255))));
             菜单.SubMenu("Drawing").AddItem(new MenuItem("drawingE", "E Range").SetValue(new Circle(true, Color.FromArgb(255, 0, 0))));
             菜单.SubMenu("Drawing").AddItem(new MenuItem("drawingR", "R Range").SetValue(new Circle(false, Color.FromArgb(0, 255, 0))));
+         /*   菜单.SubMenu("Drawing").AddItem(new MenuItem("minBRange", "Balista Min Range").SetValue(new Circle(false, Color.Chartreuse)));
+            菜单.SubMenu("Drawing").AddItem(new MenuItem("maxBRange", "Balista Max Range").SetValue(new Circle(false, Color.Green)));*/
             菜单.SubMenu("Drawing").AddItem(new MenuItem("bdxb", "Draw Minion LastHit").SetValue(new Circle(true, Color.GreenYellow)));
             菜单.SubMenu("Drawing").AddItem(new MenuItem("fjkjs", "Draw Minion Near Kill").SetValue(new Circle(true, Color.Gray)));
             菜单.SubMenu("Drawing").AddItem(new MenuItem("drawingAA", "Real AA Range(OKTW© Style)").SetValue(true));
@@ -94,7 +96,7 @@ namespace Flowers滑板鞋_重生_
 
             菜单.AddSubMenu(new Menu("Message", "Message"));
             菜单.SubMenu("Message").AddItem(new MenuItem("Credit", "Credit : NightMoon"));
-            菜单.SubMenu("Message").AddItem(new MenuItem("Version", "Version : 0.0.0.4"));
+            菜单.SubMenu("Message").AddItem(new MenuItem("Version", "Version : 0.0.0.5"));
             菜单.SubMenu("Message").AddItem(new MenuItem("ttt", "if you have more Bug pls tell me"));
 
             菜单.AddToMainMenu();
