@@ -74,6 +74,15 @@ namespace Flowers滑板鞋_重生_
             菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("maxRange", "Max Range to Balista", true).SetValue(new Slider(1500, 100, 1500)));
             菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("BiuBiuBiu1", "Kalista and Blitzcrank biubiubiu~"));
 
+            菜单.AddSubMenu(new Menu("Balista Target", "BalistaTarget"));
+
+            {
+                foreach (Obj_AI_Hero enem in ObjectManager.Get<Obj_AI_Hero>().Where(enem => enem.IsValid && enem.IsEnemy))
+                {
+                    菜单.SubMenu("BalistaTarget").AddItem(new MenuItem("target" + enem.ChampionName, enem.ChampionName).SetValue(true));
+                }
+            }
+
             菜单.AddSubMenu(new Menu("Misc", "Misc"));
             菜单.SubMenu("Misc").AddItem(new MenuItem("DamageExxx", "Auto E -> When millions will die and hero has buff").SetValue(true));
             菜单.SubMenu("Misc").AddItem(new MenuItem("usePackets", "Use Packets").SetValue(false));

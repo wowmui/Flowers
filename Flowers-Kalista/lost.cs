@@ -70,12 +70,6 @@ namespace Flowers滑板鞋_重生_
                 return;
             }
 
-            {
-                foreach (Obj_AI_Hero enem in ObjectManager.Get<Obj_AI_Hero>().Where(enem => enem.IsValid && enem.IsEnemy))
-                {
-                    KalistaM.菜单.SubMenu("Balista Target").AddItem(new MenuItem("target" + enem.ChampionName, enem.ChampionName).SetValue(true));
-                }
-            }
 
             KalistaM.KalistaMenu();
 
@@ -114,11 +108,11 @@ namespace Flowers滑板鞋_重生_
            if (AA范围OKTWStyle)
            {
                if (Hp百分比(Player) > 60)
-                   Render.Circle.DrawCircle(Player.Position, Orbwalking.GetRealAutoAttackRange(Player) +50, System.Drawing.Color.GreenYellow, 2);
+                   Render.Circle.DrawCircle(Player.Position, Orbwalking.GetRealAutoAttackRange(Player), System.Drawing.Color.GreenYellow, 2);
                else if (Hp百分比(Player) > 30)
-                   Render.Circle.DrawCircle(Player.Position, Orbwalking.GetRealAutoAttackRange(Player) +50, System.Drawing.Color.Orange, 3);
+                   Render.Circle.DrawCircle(Player.Position, Orbwalking.GetRealAutoAttackRange(Player), System.Drawing.Color.Orange, 3);
                else
-                   Render.Circle.DrawCircle(Player.Position, Orbwalking.GetRealAutoAttackRange(Player) +50, System.Drawing.Color.Red, 4);
+                   Render.Circle.DrawCircle(Player.Position, Orbwalking.GetRealAutoAttackRange(Player), System.Drawing.Color.Red, 4);
            }
            if (AA目标OKTWStyle)
            {
