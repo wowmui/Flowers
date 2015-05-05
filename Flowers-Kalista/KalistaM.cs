@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LeagueSharp;
 using LeagueSharp.Common;
 using System.Drawing;
 
@@ -66,8 +67,16 @@ namespace Flowers滑板鞋_重生_
             
              }*/
 
+            菜单.AddSubMenu(new Menu("Balista", "BiuBiuBiu"));
+            菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("useToggle", "Toggle").SetValue(false));
+            菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("useOnComboKey", "Enabled").SetValue(new KeyBind(32, KeyBindType.Press)));
+            菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("minRange", "Min Range to Balista", true).SetValue(new Slider(700, 100, 1449)));
+            菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("maxRange", "Max Range to Balista", true).SetValue(new Slider(1500, 100, 1500)));
+            菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("BiuBiuBiu1", "Kalista and Blitzcrank biubiubiu~"));
+
             菜单.AddSubMenu(new Menu("Misc", "Misc"));
             菜单.SubMenu("Misc").AddItem(new MenuItem("DamageExxx", "Auto E -> When millions will die and hero has buff").SetValue(true));
+            菜单.SubMenu("Misc").AddItem(new MenuItem("usePackets", "Use Packets").SetValue(false));
 
             菜单.AddSubMenu(new Menu("Drawings", "Drawing"));
             菜单.SubMenu("Drawing").AddItem(new MenuItem("drawingQ", "Q Range").SetValue(new Circle(true, Color.FromArgb(138, 101, 255))));
