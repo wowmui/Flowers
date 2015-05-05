@@ -114,11 +114,11 @@ namespace Flowers滑板鞋_重生_
            if (AA范围OKTWStyle)
            {
                if (Hp百分比(Player) > 60)
-                   Render.Circle.DrawCircle(Player.Position, Orbwalking.GetRealAutoAttackRange(Player), System.Drawing.Color.GreenYellow, 2);
+                   Render.Circle.DrawCircle(Player.Position, Orbwalking.GetRealAutoAttackRange(Player) +50, System.Drawing.Color.GreenYellow, 2);
                else if (Hp百分比(Player) > 30)
-                   Render.Circle.DrawCircle(Player.Position, Orbwalking.GetRealAutoAttackRange(Player), System.Drawing.Color.Orange, 3);
+                   Render.Circle.DrawCircle(Player.Position, Orbwalking.GetRealAutoAttackRange(Player) +50, System.Drawing.Color.Orange, 3);
                else
-                   Render.Circle.DrawCircle(Player.Position, Orbwalking.GetRealAutoAttackRange(Player), System.Drawing.Color.Red, 4);
+                   Render.Circle.DrawCircle(Player.Position, Orbwalking.GetRealAutoAttackRange(Player) +50, System.Drawing.Color.Red, 4);
            }
            if (AA目标OKTWStyle)
            {
