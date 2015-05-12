@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DamageIndicator.cs" />
+    <Compile Include="Flee.cs" />
     <Compile Include="KalistaM.cs" />
     <Compile Include="killables.cs" />
     <Compile Include="lost.cs" />

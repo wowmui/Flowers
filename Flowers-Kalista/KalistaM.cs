@@ -14,7 +14,7 @@ namespace Flowers滑板鞋_重生_
         public static Menu 菜单;
         public static void KalistaMenu()
         {
-            菜单 = new Menu("Flowers-Kalista", "Kalista", true);
+            菜单 = new Menu("Flowers-Kalista", "Lost.", true);
 
             var targetSelectorMenu = new Menu("Target Selector", "Target Selector");
             TargetSelector.AddToMenu(targetSelectorMenu);
@@ -45,36 +45,31 @@ namespace Flowers滑板鞋_重生_
             菜单.SubMenu("Clear").AddItem(new MenuItem("qye", "Use E JungleClear").SetValue(true));
             菜单.SubMenu("Clear").AddItem(new MenuItem("eqiangyeguai", "Use E Steal Jungle").SetValue(true));
             菜单.SubMenu("Clear").AddItem(new MenuItem("qxmp", "Clear Mana <=%").SetValue(new Slider(60, 0, 100)));
-            
+
             /*{        
             
             
             菜单.AddSubMenu(new Menu("R Setting", "RSetting"));
             菜单.SubMenu("RSetting").AddItem(new MenuItem("jilao", "Save Your Sweetheart").SetValue(true));
             菜单.SubMenu("RSetting").AddItem(new MenuItem("jilaohp", "Sweetheart Hp <=%").SetValue(new Slider(20, 0, 100)));
-
-            菜单.AddSubMenu(new Menu("Item", "Item"));//From JustMaokai
-            菜单.SubMenu("Item").AddItem(new MenuItem("useGhostblade", "Use Youmuu's Ghostblade").SetValue(true));
-            菜单.SubMenu("Item").AddItem(new MenuItem("UseBOTRK", "Use Blade of the Ruined King").SetValue(true));
-            菜单.SubMenu("Item").AddItem(new MenuItem("eL", "  Enemy HP Percentage").SetValue(new Slider(80, 0, 100)));
-            菜单.SubMenu("Item").AddItem(new MenuItem("oL", "  Own HP Percentage").SetValue(new Slider(65, 0, 100)));
-            菜单.SubMenu("Item").AddItem(new MenuItem("UseBilge", "Use Bilgewater Cutlass").SetValue(true));
-            菜单.SubMenu("Item").AddItem(new MenuItem("HLe", "  Enemy HP Percentage").SetValue(new Slider(80, 0, 100)));
+                         }*/
+            菜单.AddSubMenu(new Menu("Item", "Item"));
+            菜单.SubMenu("Item").AddItem(new MenuItem("UseYUU", "Use Youmuu's Ghostblade").SetValue(true));
+            菜单.SubMenu("Item").AddItem(new MenuItem("UseBRK", "Use Blade of the Ruined King").SetValue(true));
+            菜单.SubMenu("Item").AddItem(new MenuItem("UseBC", "Use Bilgewater Cutlass").SetValue(true));
 
             菜单.AddSubMenu(new Menu("Flee", "Flee"));
-            菜单.SubMenu("Flee").AddItem(new MenuItem("Flee", "Flee").SetValue(new KeyBind("Z".ToCharArray()[0], KeyBindType.Toggle)));
-             
-            
-             }*/
+            菜单.SubMenu("Flee").AddItem(new MenuItem("Flee", "Flee").SetValue(new KeyBind("Z".ToCharArray()[0], KeyBindType.Press)));            
+
 
          /*   菜单.AddSubMenu(new Menu("Balista", "BiuBiuBiu"));
             菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("useToggle", "Toggle").SetValue(false));
             菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("useOnComboKey", "Enabled").SetValue(new KeyBind(32, KeyBindType.Press)));
             菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("minRange", "Min Range to Balista", true).SetValue(new Slider(700, 100, 1449)));
             菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("maxRange", "Max Range to Balista", true).SetValue(new Slider(1500, 100, 1500)));
-            菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("BiuBiuBiu1", "Kalista and Blitzcrank biubiubiu~"));*/
+            菜单.SubMenu("BiuBiuBiu").AddItem(new MenuItem("BiuBiuBiu1", "Kalista and Blitzcrank biubiubiu~"));
 
-         /*   菜单.AddSubMenu(new Menu("Balista Target", "BalistaTarget"));*/
+            菜单.AddSubMenu(new Menu("Balista Target", "BalistaTarget"));*/
 
             菜单.AddSubMenu(new Menu("Misc", "Misc"));
             菜单.SubMenu("Misc").AddItem(new MenuItem("DamageExxx", "Auto E -> When millions will die and hero has buff").SetValue(true));
@@ -96,7 +91,7 @@ namespace Flowers滑板鞋_重生_
 
             菜单.AddSubMenu(new Menu("Message", "Message"));
             菜单.SubMenu("Message").AddItem(new MenuItem("Credit", "Credit : NightMoon"));
-            菜单.SubMenu("Message").AddItem(new MenuItem("Version", "Version : 0.0.0.5"));
+            菜单.SubMenu("Message").AddItem(new MenuItem("Version", "Version : 1.0.0.0"));
             菜单.SubMenu("Message").AddItem(new MenuItem("ttt", "if you have more Bug pls tell me"));
 
             菜单.AddToMainMenu();

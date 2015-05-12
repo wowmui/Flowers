@@ -17,6 +17,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Color = System.Drawing.Color;
 using LeagueSharp.Common.Data;
+using Item = LeagueSharp.Common.Items.Item;
 
 namespace Flowers滑板鞋_重生_
 {
@@ -38,9 +39,24 @@ namespace Flowers滑板鞋_重生_
         {
             return Player.Health * 100 / Player.MaxHealth;
         }
-
+        private int InitTime 
+        { 
+            get; set;
+        }
+        private bool IsJumpPossible 
+        { 
+            get; set; 
+        }
+        private Vector3 FleePosition 
+        { 
+            get; set; 
+        }
         public const string ChampionName = "Kalista";
         public static Orbwalking.Orbwalker Orbwalker;
+        public static readonly Item 弯刀 = ItemData.Bilgewater_Cutlass.GetItem();
+        public static readonly Item 破败 = ItemData.Blade_of_the_Ruined_King.GetItem();
+
+        public static readonly Item 幽梦 = ItemData.Youmuus_Ghostblade.GetItem();
         public static void Game_OnGameLoad(EventArgs args)
         {
             if (ObjectManager.Player.ChampionName != ChampionName)
@@ -50,8 +66,8 @@ namespace Flowers滑板鞋_重生_
 
             Notifications.AddNotification("Flowers Kalista by NightMoon", 1000);
             Notifications.AddNotification("`                  And  Lost`", 1000);
-            Notifications.AddNotification("Version : 0.0.0.5", 1000);
-            Game.PrintChat("Flowers-Kalista Loaded!~~~ Version : 0.0.0.5 Thanks for your use!");
+            Notifications.AddNotification("Version : 1.0.0.0", 1000);
+            Game.PrintChat("Flowers-Kalista Loaded!~~~ Version : 1.0.0.0 Thanks for your use!");
             Game.PrintChat("What are the deficiencies please immediately feedback. Thank you! ");
             Q = new Spell(SpellSlot.Q, 1160f);
             W = new Spell(SpellSlot.W, 5000f);
@@ -195,6 +211,33 @@ namespace Flowers滑板鞋_重生_
                 Ghost.Cast();
 
         }*/
+        public static bool UseBotrk(Obj_AI_Hero target)
+        {
+            var 使用弯刀 = KalistaM.菜单.Item("UseBC").GetValue<bool>();
+            var 使用破败 = KalistaM.菜单.Item("UseBRK").GetValue<bool>();
+
+            if (使用破败 && 破败.IsReady() && target.IsValidTarget(破败.Range) &&
+                Player.Health + Player.GetItemDamage(target, Damage.DamageItems.Botrk) < Player.MaxHealth)
+            {
+                return 破败.Cast(target);
+            }
+            else if (使用弯刀 && 弯刀.IsReady() && target.IsValidTarget(弯刀.Range))
+            {
+                return 弯刀.Cast(target);
+            }
+            return false;
+        }
+
+        public static bool UseYoumuu(Obj_AI_Base target)
+        {
+            var 使用幽梦 = KalistaM.菜单.Item("USEYUU").GetValue<bool>();
+
+            if (使用幽梦 && 幽梦.IsReady() && target.IsValidTarget(Orbwalking.GetRealAutoAttackRange(Player) + 50))
+            {
+                return 幽梦.Cast();
+            }
+            return false;
+        }
         private static void 总菜单(EventArgs args)
         {
             if (Player.IsDead)
@@ -225,6 +268,7 @@ namespace Flowers滑板鞋_重生_
             E抢野怪();
             自动E();
            /* Balista();*/
+            逃跑();
         }
 
         private static void 连招()
@@ -468,6 +512,133 @@ namespace Flowers滑板鞋_重生_
                 }
             }
         }*/
+        private static void 逃跑()
+        {
+            var 逃跑 = KalistaM.菜单.Item("Flee").GetValue<KeyBind>().Active;
+            var Target = Vector3.Zero;
+            var FleePosition = Vector3.Zero;
+            var InitTime = 0;
 
+            if (Target != Vector3.Zero)
+            {
+                Player.IssueOrder(GameObjectOrder.MoveTo, Target);
+
+                if (Environment.TickCount - InitTime > 500)
+                {
+                    Target = Vector3.Zero;
+                    InitTime = 0;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            if (逃跑)
+            {
+                var dashObjects = Flee.GetDashObjects();
+                Orbwalking.Orbwalk(dashObjects.Count > 0 ? dashObjects[0] : null, Game.CursorPos);
+            }
+            if (逃跑)
+            {
+                var wallCheck = Flee.GetFirstWallPoint(Player.Position, Game.CursorPos);
+
+                if (wallCheck != null)
+                {
+                    wallCheck = Flee.GetFirstWallPoint((Vector3)wallCheck, Game.CursorPos, 5);
+                }
+
+                Vector3 movePosition = wallCheck != null ? (Vector3)wallCheck : Game.CursorPos;
+
+                var tempGrid = NavMesh.WorldToGrid(movePosition.X, movePosition.Y);
+                FleePosition = NavMesh.GridToWorld((short)tempGrid.X, (short)tempGrid.Y);
+
+                Obj_AI_Base target = null;
+
+                if (逃跑)
+                {
+                    var dashObjects = Flee.GetDashObjects();
+                    if (dashObjects.Count > 0)
+                    {
+                        target = dashObjects[0];
+                    }
+                }
+
+                if (Q.IsReady() && wallCheck != null)
+                {
+                    Vector3 wallPosition = movePosition;
+
+                    Vector2 direction = (Game.CursorPos.To2D() - wallPosition.To2D()).Normalized();
+                    float maxAngle = 80;
+                    float step = maxAngle / 20;
+                    float currentAngle = 0;
+                    float currentStep = 0;
+                    bool jumpTriggered = false;
+                    while (true)
+                    {
+                        if (currentStep > maxAngle && currentAngle < 0)
+                        {
+                            break;
+                        }
+
+                        if ((currentAngle == 0 || currentAngle < 0) && currentStep != 0)
+                        {
+                            currentAngle = (currentStep) * (float)Math.PI / 180;
+                            currentStep += step;
+                        }
+                        else if (currentAngle > 0)
+                        {
+                            currentAngle = -currentAngle;
+                        }
+
+                        Vector3 checkPoint;
+
+                        if (currentStep == 0)
+                        {
+                            currentStep = step;
+                            checkPoint = wallPosition + 300 * direction.To3D();
+                        }
+                        else
+                        {
+                            checkPoint = wallPosition + 300 * direction.Rotated(currentAngle).To3D();
+                        }
+
+                        if (!checkPoint.IsWall())
+                        {
+                            wallCheck = Flee.GetFirstWallPoint(checkPoint, wallPosition);
+                            if (wallCheck != null)
+                            {
+                                Vector3 wallPositionOpposite = (Vector3)Flee.GetFirstWallPoint((Vector3)wallCheck, wallPosition, 5);
+
+                                if (Player.GetPath(wallPositionOpposite).ToList().To2D().PathLength() - Player.Distance(wallPositionOpposite) > 200)
+                                {
+                                    if (Player.Distance(wallPositionOpposite, true) < Math.Pow(300 - Player.BoundingRadius / 2, 2))
+                                    {
+                                        InitTime = Environment.TickCount;
+                                        Target = wallPositionOpposite;
+                                        Q.Cast(wallPositionOpposite);
+                                        jumpTriggered = true;
+                                        break;
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (!jumpTriggered)
+                    {
+                        Orbwalking.Orbwalk(target, movePosition, 90f, 0f, false, false);
+                    }
+                }
+                else
+                {
+                    Orbwalking.Orbwalk(target, movePosition, 90f, 0f, false, false);
+                }
+            }
+        }
     }
 }
