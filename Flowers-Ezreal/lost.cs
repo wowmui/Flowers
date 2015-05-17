@@ -218,9 +218,6 @@ namespace Flowers_Ezreal
                     自动Q();
                     骚扰();
                     break;
-                case Orbwalking.OrbwalkingMode.LastHit:
-                    补刀Q();
-                    break;
                 case Orbwalking.OrbwalkingMode.LaneClear:
                     清线();
                     清野();
@@ -316,26 +313,6 @@ namespace Flowers_Ezreal
 
                 if (W.CanCast(Wtarget) && W.GetPrediction(Wtarget).Hitchance >= HitChance.VeryHigh)
                     W.Cast(Wtarget);
-            }
-        }
-
-        private static void 补刀Q()
-        {
-            if (Q.IsReady() && Ezreal.Lost.Item("bdq", true).GetValue<Boolean>())
-            {
-                var minions = MinionManager.GetMinions(Player.ServerPosition, Q.Range, MinionTypes.All, MinionTeam.Enemy, MinionOrderTypes.Health);
-                foreach (var minion in minions)
-                {
-                    if (!minion.IsValidTarget())
-                        continue;
-
-                    bool inAARange = Orbwalking.InAutoAttackRange(minion);
-
-                    bool spellKillable = minion.Health <= Player.GetSpellDamage(minion, Q.Slot);
-
-                    if ((spellKillable && !inAARange))
-                        Q.Cast(minion);
-                }
             }
         }
 

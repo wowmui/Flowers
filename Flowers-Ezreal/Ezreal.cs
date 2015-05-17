@@ -41,7 +41,7 @@ namespace Flowers_Ezreal
             Lost.AddSubMenu(new Menu("R Setting", "Uit"));
             Lost.SubMenu("Uit").AddItem(new MenuItem("autor", "R KS").SetValue(true));
             Lost.SubMenu("Uit").AddItem(new MenuItem("shoudongr", "Semi-automatic R").SetValue(new KeyBind("R".ToCharArray()[0], KeyBindType.Press)));
-            Lost.SubMenu("Uit").AddItem(new MenuItem("minR", "min R range").SetValue(new Slider(500, 900, 0)));
+            Lost.SubMenu("Uit").AddItem(new MenuItem("minR", "min R range").SetValue(new Slider(500, 1500, 0)));
 
             Lost.AddSubMenu(new Menu("Item", "Item"));
             Lost.SubMenu("Item").AddItem(new MenuItem("UseYUU", "Use Youmuu's Ghostblade").SetValue(true));
