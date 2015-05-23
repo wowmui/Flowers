@@ -4,7 +4,7 @@ Kalista - Done
 
 Twisted Fate - Done
 
-Ezreal - To Do
+Ezreal - WIP
 
-Draven - To Do
+Draven - WIP
 
