@@ -110,7 +110,7 @@ namespace Flowers___All_In_One
           //  菜单.SubMenu("Lost").AddItem(new MenuItem("msg12", "技能冷却"));
             菜单.AddItem(new MenuItem("Flowers", "---作者:花边下丶情未央---"));
             菜单.AddItem(new MenuItem("Flowers1", "---QQ  1076751236---"));
-            菜单.AddItem(new MenuItem("Flowers1", "---对外QQ群299606556---"));
+            菜单.AddItem(new MenuItem("Flowers12", "---对外QQ群299606556---"));
 
             菜单.AddToMainMenu();
         }
