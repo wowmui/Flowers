@@ -40,7 +40,7 @@ namespace Flowers___All_In_One
             菜单.SubMenu("WARDD").AddItem(new MenuItem("GrassWard1", "              ---反隐监测"));
             菜单.SubMenu("WARDD").AddItem(new MenuItem("Always", "总是使用").SetValue(false));
             菜单.SubMenu("WARDD").AddItem(new MenuItem("Use", "连招使用").SetValue(new KeyBind(32, KeyBindType.Press)));
-            菜单.SubMenu("WARDD").AddItem(new MenuItem("GrassWard12", "              ---反隐监测"));
+            菜单.SubMenu("WARDD").AddItem(new MenuItem("GrassWard12", "              ---眼位监控"));
             菜单.SubMenu("WARDD").AddItem(new MenuItem("ta-wposok", "显示眼位监测").SetValue(true));
 
 
