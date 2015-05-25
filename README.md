@@ -1,13 +1,24 @@
 # NightMoon - 花边下丶情未央
 
-Kalista - Done
+ALL Sprite have Chinese and English
+里面的脚本都分有中文版和英文版
 
-Twisted Fate - Done
+Kalista - Done (完成)
 
-Ezreal - WIP
+Twisted Fate - Done (完成)
 
-Draven - WIP
+Varus - WIP (开发中)
 
-All In One - WIP (现在只有中文菜单... 还待添加升级)
+Orianna - WIP (开发中)
+
+Ahri - WIP (开发中)
+
+Riven - WIP (开发中)
+
+Ezreal - WIP (开发中)
+
+Draven - WIP (开发中)
+
+All In One - WIP : Only have Chinese Menu (现在只有中文菜单...开发中)
 
 
